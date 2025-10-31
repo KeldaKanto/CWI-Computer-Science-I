@@ -47,10 +47,10 @@ public class ParkingFinder {
             // you're chill about it. Thanks :)
             //********************************************************************************************************************************
             
-            spot1 = new ParkingSpot("Privet Drive",         rng.nextInt(100), rng.nextInt(100));    //spot1 = new ParkingSpot("1st Street",  rng.nextInt(100), rng.nextInt(100));
-            spot2 = new ParkingSpot("Pennsylvania Avenue",  rng.nextInt(100), rng.nextInt(100));    //spot2 = new ParkingSpot("2nd Street",  rng.nextInt(100), rng.nextInt(100));
-            spot3 = new ParkingSpot("Wallaby Way",          rng.nextInt(100), rng.nextInt(100));    //spot3 = new ParkingSpot("3rd Street",  rng.nextInt(100), rng.nextInt(100));
-            spot4 = new ParkingSpot("Negro Arroyo Lane",    rng.nextInt(100), rng.nextInt(100));    //spot4 = new ParkingSpot("4th Street",  rng.nextInt(100), rng.nextInt(100));
+            spot1 = new ParkingSpot("Privet Drive",        rng.nextInt(100), rng.nextInt(100));    //spot1 = new ParkingSpot("1st Street",  rng.nextInt(100), rng.nextInt(100));
+            spot2 = new ParkingSpot("Pennsylvania Avenue", rng.nextInt(100), rng.nextInt(100));    //spot2 = new ParkingSpot("2nd Street",  rng.nextInt(100), rng.nextInt(100));
+            spot3 = new ParkingSpot("Wallaby Way",         rng.nextInt(100), rng.nextInt(100));    //spot3 = new ParkingSpot("3rd Street",  rng.nextInt(100), rng.nextInt(100));
+            spot4 = new ParkingSpot("Negro Arroyo Lane",   rng.nextInt(100), rng.nextInt(100));    //spot4 = new ParkingSpot("4th Street",  rng.nextInt(100), rng.nextInt(100));
 
             // 3. a. ii.
             spot1.setCostPerInterval(spot1.DEFAULT_COST);
