@@ -10,7 +10,7 @@ public class ParkingFinder {
     private static ParkingSpot spot1, spot2, spot3, spot4;
     public static void main(String[] args) {
         final double DEFINED_COST = 0.3;
-        int parkingTime, carX, carY, longestStreetName, closestSpotDistance;
+        int parkingTime, carX, carY, closestSpotDistance;
         long seed;
 
         // 1. a.
@@ -37,7 +37,7 @@ public class ParkingFinder {
             carX = rng.nextInt(100);
             carY = rng.nextInt(100);
             // 2. b.
-            System.out.println("\nThe position of your vehicle is:\tX: " + carX + " Y: " + carY + "\n");
+            System.out.printf("%nThe position of your vehicle is:  X: %2d Y: %2d%n%n", carX, carY);
 
             //********************************************************************************************************************************
             // 3. a. i. 
@@ -47,10 +47,10 @@ public class ParkingFinder {
             // you're chill about it. Thanks :)
             //********************************************************************************************************************************
             
-            spot1 = new ParkingSpot("Privet Drive",         rng.nextInt(100), rng.nextInt(100));    //ParkingSpot spot1 = new ParkingSpot("1st Street",  rng.nextInt(100), rng.nextInt(100));
-            spot2 = new ParkingSpot("Pennsylvania Avenue",  rng.nextInt(100), rng.nextInt(100));    //ParkingSpot spot2 = new ParkingSpot("2nd Street",  rng.nextInt(100), rng.nextInt(100));
-            spot3 = new ParkingSpot("Wallaby Way",          rng.nextInt(100), rng.nextInt(100));    //ParkingSpot spot3 = new ParkingSpot("3rd Street",  rng.nextInt(100), rng.nextInt(100));
-            spot4 = new ParkingSpot("Negro Arroyo Lane",    rng.nextInt(100), rng.nextInt(100));    //ParkingSpot spot4 = new ParkingSpot("4th Street",  rng.nextInt(100), rng.nextInt(100));
+            spot1 = new ParkingSpot("Privet Drive",         rng.nextInt(100), rng.nextInt(100));    //spot1 = new ParkingSpot("1st Street",  rng.nextInt(100), rng.nextInt(100));
+            spot2 = new ParkingSpot("Pennsylvania Avenue",  rng.nextInt(100), rng.nextInt(100));    //spot2 = new ParkingSpot("2nd Street",  rng.nextInt(100), rng.nextInt(100));
+            spot3 = new ParkingSpot("Wallaby Way",          rng.nextInt(100), rng.nextInt(100));    //spot3 = new ParkingSpot("3rd Street",  rng.nextInt(100), rng.nextInt(100));
+            spot4 = new ParkingSpot("Negro Arroyo Lane",    rng.nextInt(100), rng.nextInt(100));    //spot4 = new ParkingSpot("4th Street",  rng.nextInt(100), rng.nextInt(100));
 
             // 3. a. ii.
             spot1.setCostPerInterval(spot1.DEFAULT_COST);
@@ -64,64 +64,56 @@ public class ParkingFinder {
             // reason I'm going to comment it out, but it is here to show that I know how to do this. 
             //****************************************************************************************
             
-            //longestStreetName = IntStream.of(spot1.getStreet().length(), spot2.getStreet().length(), spot3.getStreet().length(), spot4.getStreet().length()).max().getAsInt();
-                // Determines the longest street name so that the street name spacing is only as wide as it needs to be to justify each line
-                // * And yes, I can see that this isn't necessary at all if the street names are all 1st Street, 2nd Street, 3rd Street, & 4th Street
+                //int longestStreetName = IntStream.of(spot1.getStreet().length(), spot2.getStreet().length(), spot3.getStreet().length(), spot4.getStreet().length()).max().getAsInt();
+                    // Determines the longest street name so that the street name spacing is only as wide as it needs to be to justify each line
+                    // * And yes, I can see that this isn't necessary at all if the street names are all 1st Street, 2nd Street, 3rd Street, & 4th Street
 
-            //System.out.printf("Spot1 is on %-" + longestStreetName + "s at X: %2d, Y: %2d%n"  , spot1.getStreet(), spot1.getLocationX(), spot1.getLocationY());
-            //System.out.printf("Spot2 is on %-" + longestStreetName + "s at X: %2d, Y: %2d%n"  , spot2.getStreet(), spot2.getLocationX(), spot2.getLocationY());
-            //System.out.printf("Spot3 is on %-" + longestStreetName + "s at X: %2d, Y: %2d%n"  , spot3.getStreet(), spot3.getLocationX(), spot3.getLocationY());
-            //System.out.printf("Spot4 is on %-" + longestStreetName + "s at X: %2d, Y: %2d%n%n", spot4.getStreet(), spot4.getLocationX(), spot4.getLocationY());
+                //System.out.printf("Spot1 is on %-" + longestStreetName + "s at X: %2d, Y: %2d%n"  , spot1.getStreet(), spot1.getLocationX(), spot1.getLocationY());
+                //System.out.printf("Spot2 is on %-" + longestStreetName + "s at X: %2d, Y: %2d%n"  , spot2.getStreet(), spot2.getLocationX(), spot2.getLocationY());
+                //System.out.printf("Spot3 is on %-" + longestStreetName + "s at X: %2d, Y: %2d%n"  , spot3.getStreet(), spot3.getLocationX(), spot3.getLocationY());
+                //System.out.printf("Spot4 is on %-" + longestStreetName + "s at X: %2d, Y: %2d%n%n", spot4.getStreet(), spot4.getLocationX(), spot4.getLocationY());
 
             // 4. a, b, & c
-            System.out.printf(java.util.Locale.US,"Spot 1: %80s%n\tDistance:   %2d%n\tTotal Cost:   $%,.2f%n"  , fmtToString(1), (Math.abs(spot1.getLocationX() - carX) + Math.abs(spot1.getLocationY() - carY)), spot1.getCostPerInterval() * Math.ceil((double)parkingTime / 10));
-            System.out.printf(java.util.Locale.US,"Spot 2: %80s%n\tDistance:   %2d%n\tTotal Cost:   $%,.2f%n"  , fmtToString(2), (Math.abs(spot2.getLocationX() - carX) + Math.abs(spot2.getLocationY() - carY)), spot2.getCostPerInterval() * Math.ceil((double)parkingTime / 10));
-            System.out.printf(java.util.Locale.US,"Spot 3: %80s%n\tDistance:   %2d%n\tTotal Cost:   $%,.2f%n"  , fmtToString(3), (Math.abs(spot3.getLocationX() - carX) + Math.abs(spot3.getLocationY() - carY)), spot3.getCostPerInterval() * Math.ceil((double)parkingTime / 10));
-            System.out.printf(java.util.Locale.US,"Spot 4: %80s%n\tDistance:   %2d%n\tTotal Cost:   $%,.2f%n%n", fmtToString(4), (Math.abs(spot4.getLocationX() - carX) + Math.abs(spot4.getLocationY() - carY)), spot4.getCostPerInterval() * Math.ceil((double)parkingTime / 10));
+            System.out.printf(java.util.Locale.US,"Spot 1: %80s%n\tDistance:   %2d%n\tTotal Cost:   $%,.2f%n"  , fmtToString(spot1), (Math.abs(spot1.getLocationX() - carX) + Math.abs(spot1.getLocationY() - carY)), spot1.getCostPerInterval() * Math.ceil((double)parkingTime / 10));
+            System.out.printf(java.util.Locale.US,"Spot 2: %80s%n\tDistance:   %2d%n\tTotal Cost:   $%,.2f%n"  , fmtToString(spot2), (Math.abs(spot2.getLocationX() - carX) + Math.abs(spot2.getLocationY() - carY)), spot2.getCostPerInterval() * Math.ceil((double)parkingTime / 10));
+            System.out.printf(java.util.Locale.US,"Spot 3: %80s%n\tDistance:   %2d%n\tTotal Cost:   $%,.2f%n"  , fmtToString(spot3), (Math.abs(spot3.getLocationX() - carX) + Math.abs(spot3.getLocationY() - carY)), spot3.getCostPerInterval() * Math.ceil((double)parkingTime / 10));
+            System.out.printf(java.util.Locale.US,"Spot 4: %80s%n\tDistance:   %2d%n\tTotal Cost:   $%,.2f%n%n", fmtToString(spot4), (Math.abs(spot4.getLocationX() - carX) + Math.abs(spot4.getLocationY() - carY)), spot4.getCostPerInterval() * Math.ceil((double)parkingTime / 10));
 
+            //***************************************************************************************************************************************
             // 5. a.
+            // Can I just say I love how java has neat things like this? Streams not in the book anywhere (probably because it was introduced in 
+            // Java 8?) but I found it in some documentation online dealing with lists. MUCH easier to read than my first attempt using nested mins.
+            //***************************************************************************************************************************************
             closestSpotDistance = IntStream.of((Math.abs(spot1.getLocationX() - carX) + Math.abs(spot1.getLocationY() - carY)), (Math.abs(spot2.getLocationX() - carX) + Math.abs(spot2.getLocationY() - carY)), (Math.abs(spot3.getLocationX() - carX) + Math.abs(spot3.getLocationY() - carY)), (Math.abs(spot4.getLocationX() - carX) + Math.abs(spot4.getLocationY() - carY))).min().getAsInt();
 
             // 5. b.
             if      (closestSpotDistance == Math.abs((spot1.getLocationX() - carX)) + Math.abs((spot1.getLocationY() - carY)))
-                System.out.println("Distance to closest spot: " + closestSpotDistance + "\nClosest spot: " + fmtToString(1));
+                System.out.println("Distance to closest spot: " + closestSpotDistance + "\nClosest spot: " + fmtToString(spot1));
 
             else if (closestSpotDistance == Math.abs((spot2.getLocationX() - carX)) + Math.abs((spot2.getLocationY() - carY)))
-                System.out.println("Distance to closest spot: " + closestSpotDistance + "\nClosest spot: " + fmtToString(2));
+                System.out.println("Distance to closest spot: " + closestSpotDistance + "\nClosest spot: " + fmtToString(spot2));
 
             else if (closestSpotDistance == Math.abs((spot3.getLocationX() - carX)) + Math.abs((spot3.getLocationY() - carY)))
-                System.out.println("Distance to closest spot: " + closestSpotDistance + "\nClosest spot: " + fmtToString(3));
+                System.out.println("Distance to closest spot: " + closestSpotDistance + "\nClosest spot: " + fmtToString(spot3));
 
             else if (closestSpotDistance == Math.abs((spot4.getLocationX() - carX)) + Math.abs((spot4.getLocationY() - carY))) 
-                System.out.println("Distance to closest spot: " + closestSpotDistance + "\nClosest spot: " + fmtToString(4));
+                System.out.println("Distance to closest spot: " + closestSpotDistance + "\nClosest spot: " + fmtToString(spot4));
 
         } catch (InputMismatchException e) {
-            System.out.println("Invalid input. Please enter a number.");
+            System.err.println("Invalid input. Please enter a number.");
             System.exit(1);
         } finally {
             userInput.close();
         }
     }
 
-    private static String fmtToString(int parkingSpot) {
-        String fmtSpotInfo;
-        switch (parkingSpot) {
-            case 1:
-                fmtSpotInfo = String.format("%s", spot1.toString());
-            case 2:
-                fmtSpotInfo = String.format("%s", spot2);
-            case 3:
-                fmtSpotInfo = String.format("%s", spot3);
-            case 4:
-                fmtSpotInfo = String.format("%s", spot4);
-        }
-        fmtSpotInfo = fmtSpotInfo.replace("available", "isAvailable");
-        // regex analyzes the string for a digit, period, and a digit but NO digit after them. If it's found the pattern is returned along with a trailing zero
-        fmtSpotInfo = fmtSpotInfo.replaceAll("(\\d\\.\\d(?!\\d))", "$10"); /* \\d is a digit, \\. is a period cuz a period by itself matches any character 
-                                                                                                (?1 <SOMETHING>) is a negative look ahead "i.e. is this thing NOT next". */
+    private static String fmtToString(ParkingSpot parkingSpot) {
+        String fmtSpotInfo = "";
+        fmtSpotInfo = String.format("%s", parkingSpot);
+        // regex analyzes the string for a digit, period, and a digit but NO digit after them. If it finds something matching pattern it is returned along with a trailing zero
+        fmtSpotInfo = fmtSpotInfo.replaceAll("(\\d\\.\\d(?!\\d))", "$10");
         // if the regex can find a digit, period, digit, and digit-add a dollar sign before the matching pattern
-        fmtSpotInfo = fmtSpotInfo.replaceAll("(\\d\\.\\d\\d)", "\\$$1"); /* \\$ is dollar sign bc dollar sign calls a matching section: $1, $2, $3... hence 
-                                                                                              the $1 after \\$. */
+        fmtSpotInfo = fmtSpotInfo.replaceAll("(\\d\\.\\d\\d)", "\\$$1");
         return fmtSpotInfo;
     }
 }
