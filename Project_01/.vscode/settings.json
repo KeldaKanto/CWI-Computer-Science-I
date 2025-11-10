@@ -3,6 +3,6 @@
     "java.project.outputPath": "bin",
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
-        "Project_01/lib/Parking.jar"
+        "lib/Parking.jar"
     ]
 }
