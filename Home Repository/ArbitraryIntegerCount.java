@@ -11,28 +11,22 @@ import java.util.Random;
 
 public class ArbitraryIntegerCount {
     public static void main(String[] args) {
-        int numInts, total = 0;
+        int numInts; 
 
         Random rng = new Random();
-        numInts = rng.nextInt(25) + 1;
-        int[] arbitraryIntegers = new int[numInts];
+        numInts = rng.nextInt(21) + 1;
 
-        for (int i = 0; i < numInts; i++) {
-            arbitraryIntegers[i] = rng.nextInt(51);
+        int[][] nums = new int[numInts][2];
+
+        for (int values = 0; values < nums.length; values++) {
+            nums[values][0] = rng.nextInt(51) + 1;
+            for (int dupes = 0; dupes < nums[values].length; dupes++) {
+
+            }
         }
-
-        for (int j = 0; j < numInts; j++) {
-            total = total + arbitraryIntegers[j];
+        
+        for (int values = 0; values < nums.length; values++) {
+            if (nums[values][0] == )
         }
-
-        System.out.printf("%d integers with a random value from 0 to 50 inclusive: %n", numInts);
-
-        for (int k = 0; k < numInts; k++) {
-            if (k % 5 == 0)
-                System.out.println();
-            System.out.printf("%2d  ", arbitraryIntegers[k]);
-        }
-
-        System.out.printf("%n%nSum to %d", total);
     }
 }
