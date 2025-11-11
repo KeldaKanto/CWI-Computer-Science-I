@@ -32,10 +32,11 @@ public class RedOrBlue extends Application {
     }
 
     public void processColorButton(ActionEvent event) {
-        if (event.getSource() == redButton)
+        if (event.getSource() == redButton) {
             pane.setStyle("-fx-background-color: crimson");
-        else 
+        } else {
             pane.setStyle("-fx-background-color: deepskyblue");
+        }
     }
 
     public static void main(String[] args) {
