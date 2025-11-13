@@ -20,24 +20,24 @@ public class ParkingFinderDriver {
                 // 1. b. i.
                 System.out.print("Please enter a random seed value: ");
                 seed = userInput.nextLong();
-                ParkingFinderClass ParkingClass = new ParkingFinderClass(seed);
+                ParkingFinderClass parkingClass = new ParkingFinderClass(seed);
 
                 // 1. b. ii.
                 System.out.print("Please enter how much parking time you need in minutes: ");
                 parkingTime = userInput.nextInt();
 
                 // 2. b.
-                System.out.printf("%nThe position of your vehicle is:    X: %2d  Y: %2d%n%n", ParkingClass.getCarX(), ParkingClass.getCarY());
+                System.out.printf("%nThe position of your vehicle is:    X: %2d  Y: %2d%n%n", parkingClass.getCarX(), parkingClass.getCarY());
 
                 // 4. a, b, & c
-                for (int i = 1; i <= ParkingClass.getNumSpots(); i++) {
-                    System.out.printf(java.util.Locale.US,"Spot %1d: %80s%n\tDistance:   %2d%n\tTotal Cost:   $%,.2f%n", i, ParkingClass.fmtToString(i), ParkingClass.getSpotDistance(i), ParkingClass.getParkingCost(i,parkingTime));
+                for (int i = 1; i <= parkingClass.getNumSpots(); i++) {
+                    System.out.printf(java.util.Locale.US,"Spot %1d: %80s%n\tDistance:   %2d%n\tTotal Cost:   $%,.2f%n", i, parkingClass.fmtToString(i), parkingClass.getSpotDistance(i), parkingClass.getParkingCost(i,parkingTime));
                 } System.out.println();
 
                 // 5. b.
-                for (int i = 1; i <= ParkingClass.getNumSpots(); i++) {
-                    if (ParkingClass.getClosestSpotDistance() == ParkingClass.getSpotDistance(i))
-                        System.out.printf("Distance to closest spot: %2d%nClosest spot: %80s%n%n", ParkingClass.getClosestSpotDistance(), ParkingClass.fmtToString(i));
+                for (int i = 1; i <= parkingClass.getNumSpots(); i++) {
+                    if (parkingClass.getClosestSpotDistance() == parkingClass.getSpotDistance(i))
+                        System.out.printf("Distance to closest spot: %2d%nClosest spot: %80s%n%n", parkingClass.getClosestSpotDistance(), parkingClass.fmtToString(i));
                 }
                 
                 System.out.print("Would you like to find parking spots with another seed value? [Y/N]: ");

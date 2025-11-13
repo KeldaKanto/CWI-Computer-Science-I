@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class ParkingFinderLoopy {
     static final int NUM_SPOTS = 4, SPOTS_INDEX = NUM_SPOTS + 1; //Because arrays start at 0 the spot number will be incorrect (0,1,2,3) unless we add one to compensate
-    static ParkingSpot[] ParkingSpots = new ParkingSpot[SPOTS_INDEX]; 
+    static ParkingSpot[] parkingSpots = new ParkingSpot[SPOTS_INDEX]; 
     public static void main(String[] args) {
         final double DEFINED_COST = 0.3;
         String[] Streets = {"Privet Drive", "Pennsylvania Avenue", "Wallaby Way", "Negro Arroyo Lane"}; //String[] Streets = {"1st Street", "2nd Street", "3rd Street", "4th Street"}
@@ -36,20 +36,20 @@ public class ParkingFinderLoopy {
 
                 // 3. a. i. 
                 for (int i = 1; i <= NUM_SPOTS; i++) {
-                    ParkingSpots[i] = new ParkingSpot(Streets[i-1], rng.nextInt(100), rng.nextInt(100));
+                    parkingSpots[i] = new ParkingSpot(Streets[i-1], rng.nextInt(100), rng.nextInt(100));
                 } // the same addition to the spot array that allows the correct naming of the spots starting at 1 also breaks the street naming array that starts at 0. Subtract one to compensate
 
                 // 3. a. ii.
                 for (int i = 1; i <= NUM_SPOTS; i++) {
                     if (i == 3 || i == 4) 
-                        ParkingSpots[i].setCostPerInterval(DEFINED_COST);
+                        parkingSpots[i].setCostPerInterval(DEFINED_COST);
                     else 
-                        ParkingSpots[i].setCostPerInterval(ParkingSpots[i].DEFAULT_COST);
+                        parkingSpots[i].setCostPerInterval(parkingSpots[i].DEFAULT_COST);
                 } 
 
                 // 3. a. iii.
                 for (int i = 1; i <= NUM_SPOTS; i++) {
-                    longestStreetName = Math.max(ParkingSpots[i].getStreet().length(), longestStreetName);
+                    longestStreetName = Math.max(parkingSpots[i].getStreet().length(), longestStreetName);
                 }
 
                 /* 
@@ -60,17 +60,17 @@ public class ParkingFinderLoopy {
 
                 // 4. a, b, & c
                 for (int i = 1; i <= NUM_SPOTS; i++) {
-                    System.out.printf(java.util.Locale.US,"Spot %1d: %80s%n\tDistance:   %2d%n\tTotal Cost:   $%,.2f%n", i, fmtToString(i), (Math.abs(ParkingSpots[i].getLocationX() - carX) + Math.abs(ParkingSpots[i].getLocationY() - carY)), ParkingSpots[i].getCostPerInterval() * Math.ceil((double)parkingTime / 10));
+                    System.out.printf(java.util.Locale.US,"Spot %1d: %80s%n\tDistance:   %2d%n\tTotal Cost:   $%,.2f%n", i, fmtToString(i), (Math.abs(parkingSpots[i].getLocationX() - carX) + Math.abs(parkingSpots[i].getLocationY() - carY)), parkingSpots[i].getCostPerInterval() * Math.ceil((double)parkingTime / 10));
                 } System.out.println();
 
                 // 5. a.
                 for (int i = 1; i <= NUM_SPOTS; i++) {
-                    closestSpotDistance = Math.min(Math.abs(ParkingSpots[i].getLocationX() - carX) + Math.abs(ParkingSpots[i].getLocationY() - carY), closestSpotDistance);
+                    closestSpotDistance = Math.min(Math.abs(parkingSpots[i].getLocationX() - carX) + Math.abs(parkingSpots[i].getLocationY() - carY), closestSpotDistance);
                 }
 
                 // 5. b.
                 for (int i = 1; i <= NUM_SPOTS; i++) {
-                    if (closestSpotDistance == (Math.abs(ParkingSpots[i].getLocationX() - carX) + Math.abs(ParkingSpots[i].getLocationY() - carY)))
+                    if (closestSpotDistance == (Math.abs(parkingSpots[i].getLocationX() - carX) + Math.abs(parkingSpots[i].getLocationY() - carY)))
                         System.out.printf("Distance to closest spot: %2d%nClosest spot: %80s%n%n", closestSpotDistance, fmtToString(i));
                 }
 
@@ -90,7 +90,7 @@ public class ParkingFinderLoopy {
     }
 
     private static String fmtToString(int parkingSpot) {
-        String fmtSpotInfo = String.format("%s",ParkingSpots[parkingSpot]);
+        String fmtSpotInfo = String.format("%s",parkingSpots[parkingSpot]);
         fmtSpotInfo = fmtSpotInfo.replace("available", "isAvailable");
         // regex analyzes the string for a digit, period, and a digit but NO digit after them. If it's found the pattern is returned along with a trailing zero
         fmtSpotInfo = fmtSpotInfo.replaceAll("(\\d\\.\\d(?!\\d))", "$10"); /* \\d is a digit, \\. is a period cuz a period by itself matches any character 

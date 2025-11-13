@@ -5,7 +5,7 @@ public class ParkingFinderClass {
     private static final double DEFINED_COST = 0.3;
     private static int closestSpotDistance;
     private final int NUM_SPOTS = 4;
-    private ParkingSpot[] ParkingSpots = new ParkingSpot[NUM_SPOTS + 1]; // add one so spot names are correct when printed with toString
+    private ParkingSpot[] parkingSpots = new ParkingSpot[NUM_SPOTS + 1]; // add one so spot names are correct when printed with toString
     private int carX, carY;
 
     public ParkingFinderClass(long seed) {
@@ -14,9 +14,9 @@ public class ParkingFinderClass {
         carX = rng.nextInt(100);
         carY = rng.nextInt(100);
 
-        String[] Streets = {"Privet Drive", "Pennsylvania Avenue", "Wallaby Way", "Negro Arroyo Lane"};
+        String[] streets = {"Privet Drive", "Pennsylvania Avenue", "Wallaby Way", "Negro Arroyo Lane"};
         for (int i = 1; i <= NUM_SPOTS; i++) {
-            ParkingSpots[i] = new ParkingSpot(Streets[i-1], rng.nextInt(100), rng.nextInt(100));
+            parkingSpots[i] = new ParkingSpot(streets[i-1], rng.nextInt(100), rng.nextInt(100));
         }
         setClosestSpotDistance();
         // 3. a. ii.
@@ -38,11 +38,11 @@ public class ParkingFinderClass {
     }
     
     public int getSpotDistance(int parkingSpot) {
-        return (Math.abs(ParkingSpots[parkingSpot].getLocationX() - carX) + Math.abs(ParkingSpots[parkingSpot].getLocationY() - carY));
+        return (Math.abs(parkingSpots[parkingSpot].getLocationX() - carX) + Math.abs(parkingSpots[parkingSpot].getLocationY() - carY));
     }
 
     public double getParkingCost(int parkingSpot, int parkingTime) {
-        return ParkingSpots[parkingSpot].getCostPerInterval() * Math.ceil((double)parkingTime / 10);
+        return parkingSpots[parkingSpot].getCostPerInterval() * Math.ceil((double)parkingTime / 10);
     }
 
     public int getClosestSpotDistance() {
@@ -57,9 +57,9 @@ public class ParkingFinderClass {
         // 3. a. ii.
         for (int i = 1; i <= NUM_SPOTS; i++) {
         if (i == 3 || i == 4) 
-            ParkingSpots[i].setCostPerInterval(DEFINED_COST);
+            parkingSpots[i].setCostPerInterval(DEFINED_COST);
         else 
-            ParkingSpots[i].setCostPerInterval(ParkingSpots[i].DEFAULT_COST);
+            parkingSpots[i].setCostPerInterval(parkingSpots[i].DEFAULT_COST);
         }
     }
 
@@ -71,7 +71,7 @@ public class ParkingFinderClass {
     }
 
     public String fmtToString(int parkingSpot) {
-        String fmtSpotInfo = String.format("%s",ParkingSpots[parkingSpot]);
+        String fmtSpotInfo = String.format("%s",parkingSpots[parkingSpot]);
         fmtSpotInfo = fmtSpotInfo.replace("available", "isAvailable");
         fmtSpotInfo = fmtSpotInfo.replaceAll("(\\d\\.\\d(?!\\d))", "$10");
         fmtSpotInfo = fmtSpotInfo.replaceAll("(\\d\\.\\d\\d)", "\\$$1");

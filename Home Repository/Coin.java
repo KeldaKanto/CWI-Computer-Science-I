@@ -1,9 +1,9 @@
 public class Coin {
-    private CoinFace currentFace = CoinFace.heads;
+    private CoinFace currentFace = CoinFace.HEADS;
     private CoinFace face;
 
     private enum CoinFace {
-        heads, tails;
+        HEADS, TAILS;
     }
 
     public Coin () {
@@ -11,7 +11,7 @@ public class Coin {
     }
 
     public void flip() {
-        face = (Math.random() * 2 > 1) ? CoinFace.heads : CoinFace.tails;
+        face = (Math.random() * 2 > 1) ? CoinFace.HEADS : CoinFace.TAILS;
     }
 
     public boolean isHeads() {
