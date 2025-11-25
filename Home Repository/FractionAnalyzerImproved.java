@@ -25,6 +25,7 @@ public class FractionAnalyzerImproved {
                     inputNum = scanLine.next().replaceAll("^\\s+|\\s+$", "");
                     inputDenom = scanLine.next().replaceAll("^\\s+|\\s+$", "");
                 }
+                assert inputNum != null;
                 numerator = Integer.parseInt(inputNum);
                 denominator = Integer.parseInt(inputDenom);
 
@@ -42,7 +43,7 @@ public class FractionAnalyzerImproved {
                 scanLine.close();
             } while (repeat.equalsIgnoreCase("y"));
         } catch (InputMismatchException e) {
-            System.out.println("Invalid input. Please enter a number.");
+            System.err.println("Invalid input. Please enter a number.");
             System.exit(1);
         } finally {
             scanInput.close();

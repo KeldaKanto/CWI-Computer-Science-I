@@ -7,6 +7,7 @@ import edu.cwi.parking.ParkingSpot;
 import java.util.Scanner;
 import java.util.InputMismatchException;
 import java.util.Random;
+import java.util.Locale;
 import java.util.stream.IntStream; // Man I love all these silly java utilities
 
 public class ParkingFinder {
@@ -21,10 +22,11 @@ public class ParkingFinder {
         System.out.println("This program will determine how much it would cost to park in 4 different "
                        + "\nparking spots for a given amount of time and which spot is closest to you. \n");
 
-        //**********************************************************************************************************************************************
-        // Yeah I know you don't particularly care for the try-catch but I feel like it's easy enough to implement and nice to close up the possibility
-        // that the user will try and enter something stupid. Also, my VSCode also gives the scanner a yellow underline if it doesn't have it 
-        //**********************************************************************************************************************************************
+        //**************************************************************************************************************
+        // Yeah I know you don't particularly care for the try-catch but I feel like it's easy enough to implement and
+        // nice to close up the possibility that the user will try and enter something stupid. Also, my VSCode also
+        // gives the scanner a yellow underline if it doesn't have it
+        //**************************************************************************************************************
 
         try {
             // 1. b. i.
@@ -42,18 +44,18 @@ public class ParkingFinder {
             // 2. b.
             System.out.printf("%nThe position of your vehicle is:  X: %2d Y: %2d%n%n", carX, carY);
 
-            //********************************************************************************************************************************
+            //**********************************************************************************************************
             // 3. a. i. 
-            // Ok after reviewing all the requirements for the assignment I did notice that Dr. Sevigney specified "Street names should be
-            // given based on the order they are read in (e.g. “1st Street”, “2nd Street”, “3rd Street”, “4th Street”)" but I was having 
-            // fun naming them after famous addresses. If this is really a problem I do have the 'correct' names commented out but I'm hoping
-            // you're chill about it. Thanks :)
-            //********************************************************************************************************************************
+            // Ok after reviewing all the requirements for the assignment I did notice that Dr. Sevigny specified
+            // "Street names should be given based on the order they are read in (e.g. “1st Street”, “2nd Street”,
+            // “3rd Street”, “4th Street”)" but I was having fun naming them after famous addresses. If this is really
+            // a problem I do have the 'correct' names commented out, but I'm hoping you're chill about it. Thanks :)
+            //**********************************************************************************************************
             
-            spot1 = new ParkingSpot("Privet Drive",        rng.nextInt(100), rng.nextInt(100));    //spot1 = new ParkingSpot("1st Street",  rng.nextInt(100), rng.nextInt(100));
-            spot2 = new ParkingSpot("Pennsylvania Avenue", rng.nextInt(100), rng.nextInt(100));    //spot2 = new ParkingSpot("2nd Street",  rng.nextInt(100), rng.nextInt(100));
-            spot3 = new ParkingSpot("Wallaby Way",         rng.nextInt(100), rng.nextInt(100));    //spot3 = new ParkingSpot("3rd Street",  rng.nextInt(100), rng.nextInt(100));
-            spot4 = new ParkingSpot("Negro Arroyo Lane",   rng.nextInt(100), rng.nextInt(100));    //spot4 = new ParkingSpot("4th Street",  rng.nextInt(100), rng.nextInt(100));
+            spot1 = new ParkingSpot("Privet Drive",        rng.nextInt(100), rng.nextInt(100));      //spot1 = new ParkingSpot("1st Street",  rng.nextInt(100), rng.nextInt(100));
+            spot2 = new ParkingSpot("Pennsylvania Avenue", rng.nextInt(100), rng.nextInt(100));      //spot2 = new ParkingSpot("2nd Street",  rng.nextInt(100), rng.nextInt(100));
+            spot3 = new ParkingSpot("Wallaby Way",         rng.nextInt(100), rng.nextInt(100));      //spot3 = new ParkingSpot("3rd Street",  rng.nextInt(100), rng.nextInt(100));
+            spot4 = new ParkingSpot("Negro Arroyo Lane",   rng.nextInt(100), rng.nextInt(100));      //spot4 = new ParkingSpot("4th Street",  rng.nextInt(100), rng.nextInt(100));
 
             // 3. a. ii.
             spot1.setCostPerInterval(spot1.DEFAULT_COST);
@@ -63,7 +65,7 @@ public class ParkingFinder {
 
             //****************************************************************************************
             // 3. a. iii.   <===
-            // This in struction is listed in writing but isn't shown in the final result. For this 
+            // This instruction is listed in writing but isn't shown in the final result. For this
             // reason I'm going to comment it out, but it is here to show that I know how to do this. 
             //****************************************************************************************
             
@@ -77,16 +79,17 @@ public class ParkingFinder {
                 //System.out.printf("Spot4 is on %-" + longestStreetName + "s at X: %2d, Y: %2d%n%n", spot4.getStreet(), spot4.getLocationX(), spot4.getLocationY());
 
             // 4. a, b, & c
-            System.out.printf(java.util.Locale.US,"Spot 1: %80s%n\tDistance:   %2d%n\tTotal Cost:   $%,.2f%n"  , fmtToString(spot1), (Math.abs(spot1.getLocationX() - carX) + Math.abs(spot1.getLocationY() - carY)), spot1.getCostPerInterval() * Math.ceil((double)parkingTime / 10));
-            System.out.printf(java.util.Locale.US,"Spot 2: %80s%n\tDistance:   %2d%n\tTotal Cost:   $%,.2f%n"  , fmtToString(spot2), (Math.abs(spot2.getLocationX() - carX) + Math.abs(spot2.getLocationY() - carY)), spot2.getCostPerInterval() * Math.ceil((double)parkingTime / 10));
-            System.out.printf(java.util.Locale.US,"Spot 3: %80s%n\tDistance:   %2d%n\tTotal Cost:   $%,.2f%n"  , fmtToString(spot3), (Math.abs(spot3.getLocationX() - carX) + Math.abs(spot3.getLocationY() - carY)), spot3.getCostPerInterval() * Math.ceil((double)parkingTime / 10));
-            System.out.printf(java.util.Locale.US,"Spot 4: %80s%n\tDistance:   %2d%n\tTotal Cost:   $%,.2f%n%n", fmtToString(spot4), (Math.abs(spot4.getLocationX() - carX) + Math.abs(spot4.getLocationY() - carY)), spot4.getCostPerInterval() * Math.ceil((double)parkingTime / 10));
+            System.out.printf(Locale.US,"Spot 1: %80s%n\tDistance:   %2d%n\tTotal Cost:   $%,.2f%n"  , fmtToString(spot1), (Math.abs(spot1.getLocationX() - carX) + Math.abs(spot1.getLocationY() - carY)), spot1.getCostPerInterval() * Math.ceil((double)parkingTime / 10));
+            System.out.printf(Locale.US,"Spot 2: %80s%n\tDistance:   %2d%n\tTotal Cost:   $%,.2f%n"  , fmtToString(spot2), (Math.abs(spot2.getLocationX() - carX) + Math.abs(spot2.getLocationY() - carY)), spot2.getCostPerInterval() * Math.ceil((double)parkingTime / 10));
+            System.out.printf(Locale.US,"Spot 3: %80s%n\tDistance:   %2d%n\tTotal Cost:   $%,.2f%n"  , fmtToString(spot3), (Math.abs(spot3.getLocationX() - carX) + Math.abs(spot3.getLocationY() - carY)), spot3.getCostPerInterval() * Math.ceil((double)parkingTime / 10));
+            System.out.printf(Locale.US,"Spot 4: %80s%n\tDistance:   %2d%n\tTotal Cost:   $%,.2f%n%n", fmtToString(spot4), (Math.abs(spot4.getLocationX() - carX) + Math.abs(spot4.getLocationY() - carY)), spot4.getCostPerInterval() * Math.ceil((double)parkingTime / 10));
 
-            //***************************************************************************************************************************************
+            //**********************************************************************************************************
             // 5. a.
-            // Can I just say I love how java has neat things like this? Streams not in the book anywhere (probably because it was introduced in 
-            // Java 8?) but I found it in some documentation online dealing with lists. MUCH easier to read than my first attempt using nested mins.
-            //***************************************************************************************************************************************
+            // Can I just say I love how java has neat things like this? Streams not in the book anywhere (probably
+            // because it was introduced in Java 8?) but I found it in some documentation online dealing with lists.
+            // MUCH easier to read than my first attempt using nested mins.
+            //**********************************************************************************************************
             closestSpotDistance = IntStream.of((Math.abs(spot1.getLocationX() - carX) + Math.abs(spot1.getLocationY() - carY)), (Math.abs(spot2.getLocationX() - carX) + Math.abs(spot2.getLocationY() - carY)), (Math.abs(spot3.getLocationX() - carX) + Math.abs(spot3.getLocationY() - carY)), (Math.abs(spot4.getLocationX() - carX) + Math.abs(spot4.getLocationY() - carY))).min().getAsInt();
 
             // 5. b.

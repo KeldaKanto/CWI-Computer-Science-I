@@ -37,7 +37,8 @@ public class ParkingFinderLoopy {
                 // 3. a. i. 
                 for (int i = 1; i <= NUM_SPOTS; i++) {
                     parkingSpots[i] = new ParkingSpot(Streets[i-1], rng.nextInt(100), rng.nextInt(100));
-                } // the same addition to the spot array that allows the correct naming of the spots starting at 1 also breaks the street naming array that starts at 0. Subtract one to compensate
+                } // the same addition to the spot array that allows the correct naming of the spots starting at 1 also
+                  // breaks the street naming array that starts at 0. Subtract one to compensate
 
                 // 3. a. ii.
                 for (int i = 1; i <= NUM_SPOTS; i++) {
@@ -51,12 +52,6 @@ public class ParkingFinderLoopy {
                 for (int i = 1; i <= NUM_SPOTS; i++) {
                     longestStreetName = Math.max(parkingSpots[i].getStreet().length(), longestStreetName);
                 }
-
-                /* 
-                for (int i = 1; i <= NUM_SPOTS; i++) {
-                    System.out.printf("Spot %1d is on %-" + longestStreetName + "s at X: %2d, Y: %2d%n", i, ParkingSpots[i].getStreet(), ParkingSpots[i].getLocationX(), ParkingSpots[i].getLocationY());
-                } System.out.println();
-                 */
 
                 // 4. a, b, & c
                 for (int i = 1; i <= NUM_SPOTS; i++) {
@@ -76,7 +71,7 @@ public class ParkingFinderLoopy {
 
                 System.out.print("Would you like to find parking spots with another seed value? [Y/N]: ");
                 repeat = userInput.next();
-                closestSpotDistance = 1000; // reset closestSpotDistance so it can be calculated properly next time if the function is repeated
+                closestSpotDistance = 1000; // reset closestSpotDistance for next run
             } while (repeat.equalsIgnoreCase("y"));
 
             System.out.println("\nThank you for using ParkingFinder!");
@@ -92,11 +87,7 @@ public class ParkingFinderLoopy {
     private static String fmtToString(int parkingSpot) {
         String fmtSpotInfo = String.format("%s",parkingSpots[parkingSpot]);
         fmtSpotInfo = fmtSpotInfo.replace("available", "isAvailable");
-        // regex analyzes the string for a digit, period, and a digit but NO digit after them. If it's found the pattern is returned along with a trailing zero
-        fmtSpotInfo = fmtSpotInfo.replaceAll("(\\d\\.\\d(?!\\d))", "$10"); /* \\d is a digit, \\. is a period cuz a period by itself matches any character 
-                                                                                                (?1 <SOMETHING>) is a negative look ahead "i.e. is this thing NOT next" */
-        // if the regex can find a digit, period, digit, and digit-add a dollar sign before the matching pattern
-        fmtSpotInfo = fmtSpotInfo.replaceAll("(\\d\\.\\d\\d)", "\\$$1"); // \\$ is dollar sign bc dollar sign calls a matching section: $1, $2, $3... hence the $1 after \\$
-        return fmtSpotInfo;
+        fmtSpotInfo = fmtSpotInfo.replaceAll("(\\d\\.\\d(?!\\d))", "$10");
+        fmtSpotInfo = fmtSpotInfo.replaceAll("(\\d\\.\\d\\d)", "\\$$1");
     }
 }

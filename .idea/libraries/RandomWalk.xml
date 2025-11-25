@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="RandomWalk">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Project_02/lib/RandomWalk.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

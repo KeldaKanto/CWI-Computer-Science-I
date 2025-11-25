@@ -5,8 +5,8 @@ public class ParkingFinderClass {
     private static final double DEFINED_COST = 0.3;
     private static int closestSpotDistance;
     private final int NUM_SPOTS = 4;
-    private ParkingSpot[] parkingSpots = new ParkingSpot[NUM_SPOTS + 1]; // add one so spot names are correct when printed with toString
-    private int carX, carY;
+    private final ParkingSpot[] parkingSpots = new ParkingSpot[NUM_SPOTS + 1]; // add one so spot names are 1, 2, 3, 4,
+    private int carX, carY;                                                    // when printed with toString
 
     public ParkingFinderClass(long seed) {
         // 2. a.
@@ -38,7 +38,8 @@ public class ParkingFinderClass {
     }
     
     public int getSpotDistance(int parkingSpot) {
-        return (Math.abs(parkingSpots[parkingSpot].getLocationX() - carX) + Math.abs(parkingSpots[parkingSpot].getLocationY() - carY));
+        return (Math.abs(parkingSpots[parkingSpot].getLocationX() - carX)
+              + Math.abs(parkingSpots[parkingSpot].getLocationY() - carY));
     }
 
     public double getParkingCost(int parkingSpot, int parkingTime) {

@@ -1,7 +1,0 @@
-{
-    "java.project.referencedLibraries": [
-        "lib/**/*.jar",
-        "Project_01/lib/Parking.jar",
-        "Project_02/lib/RandomWalk.jar"
-    ]
-}
