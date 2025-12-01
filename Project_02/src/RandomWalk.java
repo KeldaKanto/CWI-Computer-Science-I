@@ -14,6 +14,7 @@ public class RandomWalk implements RandomWalkInterface {
     Random rng;
 
     public RandomWalk(int gridSize) {
+        size = gridSize;
         start = new Point(0, gridSize - 1);
         end = new Point(gridSize - 1, 0);
         current = new Point(start);
@@ -23,6 +24,7 @@ public class RandomWalk implements RandomWalkInterface {
     }
 
     public RandomWalk(int gridSize, long seed) {
+        size = gridSize;
         start = new Point(0, gridSize - 1);
         end = new Point(gridSize - 1, 0);
         current = new Point(start);
@@ -76,7 +78,7 @@ public class RandomWalk implements RandomWalkInterface {
     }
 
     public ArrayList<Point> getPath() {
-        return path;
+        return new ArrayList<>(path);
     }
 
     @Override
